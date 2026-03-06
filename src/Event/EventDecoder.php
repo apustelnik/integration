@@ -8,6 +8,7 @@ use Simplia\Integration\Event\Order\AdminBatchUsersEvent;
 use Simplia\Integration\Event\Order\NewOrderEvent;
 use Simplia\Integration\Event\Shipment\ShipmentNormalizeEvent;
 use Simplia\Integration\Event\Stock\NewStockInputSupplierEvent;
+use Simplia\Integration\Event\Terminal\TerminalPageEvent;
 use Simplia\Integration\Model\Shipment\Shipment;
 
 class EventDecoder {
@@ -38,6 +39,8 @@ class EventDecoder {
                 return new NewStockInputSupplierEvent($input['id']);
             case 'shipment.normalize' :
                 return new ShipmentNormalizeEvent($input['carrierCode'], Shipment::fromJson($input['shipment']));
+            case 'admin.terminal.page' :
+                return new TerminalPageEvent();
         }
 
         return null;
