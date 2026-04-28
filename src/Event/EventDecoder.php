@@ -2,6 +2,8 @@
 
 namespace Simplia\Integration\Event;
 
+use Simplia\Integration\Event\Frontend\FrontendCallContext;
+use Simplia\Integration\Event\Frontend\FrontendCallEvent;
 use Simplia\Integration\Event\Order\AdminBatchOrdersEvent;
 use Simplia\Integration\Event\Order\AdminBatchProductsEvent;
 use Simplia\Integration\Event\Order\AdminBatchUsersEvent;
@@ -41,6 +43,11 @@ class EventDecoder {
                 return new ShipmentNormalizeEvent($input['carrierCode'], Shipment::fromJson($input['shipment']));
             case 'admin.terminal.page' :
                 return new TerminalPageEvent();
+            case 'frontend.call' :
+                return new FrontendCallEvent(
+                    $input['data'] ?? [],
+                    FrontendCallContext::fromArray($input['context'] ?? []),
+                );
         }
 
         return null;

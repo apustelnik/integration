@@ -15,6 +15,7 @@
                                         <xs:enumeration value="schedule"/>
                                         <xs:enumeration value="order.created"/>
                                         <xs:enumeration value="shipment.normalize"/>
+                                        <xs:enumeration value="frontend.call"/>
                                     </xs:restriction>
                                 </xs:simpleType>
                             </xs:element>
