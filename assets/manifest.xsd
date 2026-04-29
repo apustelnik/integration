@@ -15,6 +15,7 @@
                                         <xs:enumeration value="schedule"/>
                                         <xs:enumeration value="order.created"/>
                                         <xs:enumeration value="shipment.normalize"/>
+                                        <xs:enumeration value="frontend.call"/>
                                     </xs:restriction>
                                 </xs:simpleType>
                             </xs:element>
@@ -52,6 +53,13 @@
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="terminal-action">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="label" type="xs:string"/>
+                                    </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
                         </xs:choice>
